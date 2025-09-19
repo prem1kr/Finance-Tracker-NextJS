@@ -3,6 +3,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
+import Google from "../google/page.jsx";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -126,6 +127,11 @@ export default function Signup() {
             </button>
           </form>
 
+
+          <div className="mt-2">
+               <Google/>
+          </div>
+         
           <div className="mt-4 text-center text-sm text-gray-600">
             <p>
               Already have an account?{" "}

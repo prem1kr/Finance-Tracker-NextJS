@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Google from "../google/page.jsx";
 
 export default function Login() {
   const router = useRouter();
@@ -103,11 +104,14 @@ export default function Login() {
               {loading ? "Signing In..." : "Sign In"}
             </button>
           </form>
-
+          <div className="mt-2">
+            <Google/>
+          </div>
+          
           <div className="mt-6 text-center text-sm text-gray-600">
             <p>
               Don’t have an account?{" "}
-              <Link href="signup">
+              <Link href="/pages/auth/signup">
                 <span className="font-medium text-emerald-600 cursor-pointer">Sign Up</span>
               </Link>
             </p>
