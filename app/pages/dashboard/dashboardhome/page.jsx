@@ -57,7 +57,7 @@ function HomeContent() {
       style={{ fontFeatureSettings: '"cv11", "ss03"' }}
     >
       <Navbar showMenuButton={showMenuButton} onMenuClick={() => setSidebarOpen(true)} />
-      <div className="pt-16 flex">
+      <div className="pt-14 flex">
         <div>
          {shouldShowSidebar && (
         <Sidebar
