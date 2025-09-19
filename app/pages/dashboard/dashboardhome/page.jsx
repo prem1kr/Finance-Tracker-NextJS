@@ -59,16 +59,15 @@ function HomeContent() {
       <Navbar showMenuButton={showMenuButton} onMenuClick={() => setSidebarOpen(true)} />
       <div className="pt-16 flex">
         <div>
-          {shouldShowSidebar && (
-            <div className="w-64 fixed top-16 left-0 h-[calc(100vh-4rem)] bg-white dark:bg-gray-800 shadow-md z-40 transition-colors duration-200 border-r border-gray-200 dark:border-gray-700">
-              <Sidebar
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-              />
-            </div>
-          )}
+         {shouldShowSidebar && (
+        <Sidebar
+      sidebarOpen={true} // always open on desktop
+       setSidebarOpen={setSidebarOpen}
+      currentView={currentView}
+       setCurrentView={setCurrentView}
+         />
+       )}
+
           {!shouldShowSidebar && (
             <div
               className={`fixed inset-0 z-50 bg-black/40 dark:bg-black/60 transition-opacity duration-300 ${
