@@ -63,33 +63,29 @@ export default function Income() {
     await refetchSources();
   };
 
- 
-
   const handleEdit = async (source) => {
     setSelectedSource(source);
     setEditModalOpen(true);
     await refetchSources();
-
   };
 
   const handleDelete = async (source) => {
-  if (!window.confirm(`Are you sure you want to delete ${source.title}?`)) return;
-  try {
-    const userId = localStorage.getItem("userId");
-    const response = await axios.delete('/api/controller/transaction/delete', {
-      params: { id: source._id, userId }
-    });
-    if (response.status === 200) {
-      alert("Income source deleted successfully!");
-      await refetchSources();
-    } else {
-      alert("Failed to delete income source");
+    if (!window.confirm(`Are you sure you want to delete ${source.title}?`)) return;
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await axios.delete('/api/controller/transaction/delete', {
+        params: { id: source._id, userId }
+      });
+      if (response.status === 200) {
+        alert("Income source deleted successfully!");
+        await refetchSources();
+      } else {
+        alert("Failed to delete income source");
+      }
+    } catch (error) {
+      alert("Error deleting income source: " + error.message);
     }
-  } catch (error) {
-    alert("Error deleting income source: " + error.message);
-  }
-};
-
+  };
 
   const downloadPDF = () => {
     const doc = new jsPDF();
@@ -211,10 +207,8 @@ export default function Income() {
             {sources.map((src) => (
               <div
                 key={src._id}
-                className={`group relative flex items-center justify-between rounded-lg px-2 py-3 shadow transition-all duration-300
-                  bg-gray-50 dark:bg-gray-700
-                  hover:bg-gray-100 dark:hover:bg-gray-600
-                 `}
+                className="flex items-center justify-between rounded-lg px-2 py-3 shadow transition-all duration-300
+                  bg-gray-50 dark:bg-gray-700"
               >
                 <div className="flex items-center space-x-3">
                   <span className="p-2 rounded-full text-xl bg-white/80 dark:bg-gray-900/80">{src.icon ?? "❓"}</span>
@@ -225,7 +219,7 @@ export default function Income() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-green-500 dark:text-green-400 font-bold text-base">+ ${src.amount.toLocaleString()}</span>
-                  <div className="opacity-0 group-hover:opacity-100 flex space-x-2 ml-4 transition-opacity duration-300">
+                  <div className="flex space-x-2 ml-4">
                     <button
                       onClick={() => handleEdit(src)}
                       className="text-gray-600 dark:text-gray-300 hover:text-purple-600 cursor-pointer"
