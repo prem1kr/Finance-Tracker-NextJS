@@ -104,9 +104,9 @@ export default function Login() {
               {loading ? "Signing In..." : "Sign In"}
             </button>
           </form>
-          <div className="mt-2">
+          {/* <div className="mt-2">
             <Google/>
-          </div>
+          </div> */}
           
           <div className="mt-6 text-center text-sm text-gray-600">
             <p>
